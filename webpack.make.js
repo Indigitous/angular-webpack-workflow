@@ -6,8 +6,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
-var modRewrite = require('connect-modrewrite');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
 
 module.exports = function makeWebpackConfig(options) {
     /**
@@ -17,6 +16,8 @@ module.exports = function makeWebpackConfig(options) {
      */
     var BUILD = !!options.BUILD;
     var TEST = !!options.TEST;
+
+    var configEnv = options.CONFIG || process.env.NODE_ENV || 'development';
 
     /**
      * Config
@@ -50,7 +51,7 @@ module.exports = function makeWebpackConfig(options) {
     } else {
         config.output = {
             // Absolute output directory
-            path: path.join(__dirname, '/public'),
+            path: path.join(__dirname, 'public'),
 
             // Output path from the view of the page
             // Uses webpack-dev-server in development
@@ -72,8 +73,10 @@ module.exports = function makeWebpackConfig(options) {
      * Sets root to node_modules, but allows backup modules from bower_components
      */
     config.resolve = {
-        root: [path.join(__dirname, "node_modules")],
-        fallback: [path.join(__dirname, "bower_components")]
+        alias: {
+            config: path.join(__dirname, 'config', configEnv + '.js')
+        },
+        modules: [path.join(__dirname), "node_modules", "bower_components", "vendor"]
     };
 
     /**
@@ -98,15 +101,19 @@ module.exports = function makeWebpackConfig(options) {
 
         // Initialize module
     config.module = {
-        preLoaders: [],
         loaders: [{
+        //     enforce: 'pre',
+        //     test: /\.component\.js$/,
+        //     loader: componentHotLoader,
+        //     exclude: [/bower_components/, /node_modules/, /\.test\.js/]
+        // },{
             // JS LOADER
             // Reference: https://github.com/babel/babel-loader
             // Transpile .js files using babel-loader
             // Compiles ES6 and ES7 into ES5 code
             test: /\.js$/,
-            loaders: ['ng-annotate', 'babel'],
-            exclude: /node_modules|bower_components/
+            loaders: ['babel'],
+            exclude: /node_modules|bower_components|vendor\//
         }, {
             // HTML LOADER
             // Reference: https://github.com/WearyMonkey/ngtemplate-loader
@@ -136,13 +143,14 @@ module.exports = function makeWebpackConfig(options) {
     // Instrument JS files with Isparta for subsequent code coverage reporting
     // Skips node_modules and files that end with .test.js
     if (TEST) {
-        config.module.preLoaders.push({
+        config.module.loaders.push({
+            enforce: 'pre',
             test: /\.js$/,
             exclude: [
                 /node_modules/,
                 /\.test\.js$/
             ],
-            loader: 'isparta-instrumenter'
+            loader: 'isparta'
         });
     }
 
@@ -160,7 +168,10 @@ module.exports = function makeWebpackConfig(options) {
             //
             // Reference: https://github.com/webpack/style-loader
             // Use style-loader in development for hot-loading
-            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+            loader: ExtractTextPlugin.extract({
+                loader: 'css!postcss',
+                fallback: 'style'
+            })
         };
 
         // SASS LOADER
@@ -169,10 +180,14 @@ module.exports = function makeWebpackConfig(options) {
         //
         var sassLoader = {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap&sourceMapContents&includePaths[]=' + encodeURIComponent(path.resolve(process.cwd(), "node_modules")))
+            loader: ExtractTextPlugin.extract({
+                loader: 'css!postcss!sass',
+                fallback: 'style'
+            })
         };
-        if (BUILD) {
-            sassLoader.loader = ExtractTextPlugin.extract('style', 'css!postcss!sass?includePaths[]=' + encodeURIComponent(path.resolve(process.cwd(), "node_modules")));
+        if (!BUILD) {
+            cssLoader.loader = 'style!css!postcss';
+            sassLoader.loader = 'style!css!postcss!sass';
         }
         // Add cssLoader to the loader list
         config.module.loaders.push(cssLoader);
@@ -190,16 +205,22 @@ module.exports = function makeWebpackConfig(options) {
         config.module.loaders.push(nullLoader);
     }
 
-    /**
-     * PostCSS
-     * Reference: https://github.com/postcss/autoprefixer-core
-     * Add vendor prefixes to your css
-     */
-    config.postcss = [
-        autoprefixer({
-            browsers: ['last 2 version']
-        })
-    ];
+    if (!TEST && !BUILD) {
+        config.module.loaders.push({
+            enforce: "pre",
+            test: /\.js$/,
+            exclude: /node_modules|bower_components|vendor\//,
+            loaders: ['eslint']
+        });
+    }
+
+    if (BUILD) {
+        // Build translations
+        config.module.loaders.push({
+            test: /\.po$/,
+            loader: 'filename=locale/[name].json!angular-gettext?format=json'
+        });
+    }
 
     /**
      * Plugins
@@ -210,20 +231,32 @@ module.exports = function makeWebpackConfig(options) {
         // Reference: https://github.com/webpack/extract-text-webpack-plugin
         // Extract css files
         // Disabled when in test mode or not in build mode
-        new ExtractTextPlugin('[name].[hash].css', {
+        new ExtractTextPlugin({
+            filename: '[name].[hash].css',
             disable: !BUILD || TEST
         })
     ];
 
-    if (!TEST && !BUILD) {
-        config.eslint = {
+    var loaderOptions = {
+        postcss: [
+            autoprefixer({
+                browsers: ['last 2 version']
+            })
+        ],
+        eslint: {
             parser: 'babel-eslint'
+        },
+        sassLoader: {
+            includePaths: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, 'bower_components'), path.resolve(__dirname, 'vendor')]
+        }
+        // ...other configs that used to directly on `modules.exports`
+    };
+    if (!BUILD && !TEST) {
+        loaderOptions.sassLoader.sourceMaps = true;
+        loaderOptions.sassLoader.sourceMapContents = true;
+        loaderOptions.cssLoader = {
+            sourceMaps: true
         };
-        config.module.loaders.push({
-            test: /\.js$/,
-            exclude: /node_modules|bower_components|vendor/,
-            loaders: ['eslint']
-        });
     }
 
     // Skip rendering index.html in test mode
@@ -231,18 +264,16 @@ module.exports = function makeWebpackConfig(options) {
         // Reference: https://github.com/ampedandwired/html-webpack-plugin
         // Render index.html
         config.plugins.push(
+            new webpack.LoaderOptionsPlugin({
+                options: loaderOptions
+            }),
             new HtmlWebpackPlugin({
                 template: './src/index.html',
+                favicon: './src/images/mpdx-favicon.png',
                 inject: 'body',
-                minify: BUILD
-            }),
-            new BrowserSyncPlugin({
-                host: 'localhost',
-                port: 8080,
-                server: { baseDir: ['public'] },
-                middleware: [
-                    modRewrite(['^[^\\.]*$ /index.html [L]'])
-                ]
+                minify: (BUILD ? {
+                    html5: true
+                } : false)
             })
         );
     }
@@ -276,6 +307,13 @@ module.exports = function makeWebpackConfig(options) {
             cached: false,
             colors: true,
             chunk: false
+        },
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'http://192.168.99.100:3000',
+                secure: false
+            }
         }
     };
 
