@@ -1,13 +1,13 @@
 'use strict';
 
 // Modules
-var webpack = require('webpack'),
-    autoprefixer = require('autoprefixer'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    path = require('path'),
-    modRewrite = require('connect-modrewrite'),
-    BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+var modRewrite = require('connect-modrewrite');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = function makeWebpackConfig(options) {
     /**
@@ -32,11 +32,11 @@ module.exports = function makeWebpackConfig(options) {
      * Karma will set this when it's a test build
      */
     if (TEST) {
-        config.entry = {}
+        config.entry = {};
     } else {
         config.entry = {
             app: './src/app.module.js'
-        }
+        };
     }
 
     /**
@@ -46,11 +46,11 @@ module.exports = function makeWebpackConfig(options) {
      * Karma will handle setting it up for you when it's a test build
      */
     if (TEST) {
-        config.output = {}
+        config.output = {};
     } else {
         config.output = {
             // Absolute output directory
-            path: __dirname + '/public',
+            path: path.join(__dirname, '/public'),
 
             // Output path from the view of the page
             // Uses webpack-dev-server in development
@@ -63,7 +63,7 @@ module.exports = function makeWebpackConfig(options) {
             // Filename for non-entry points
             // Only adds hash in build mode
             chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js'
-        }
+        };
     }
 
     /**
@@ -107,13 +107,13 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.js$/,
             loaders: ['ng-annotate', 'babel'],
             exclude: /node_modules|bower_components/
-        },{
+        }, {
             // HTML LOADER
             // Reference: https://github.com/WearyMonkey/ngtemplate-loader
             // Allow loading html through js
             test: /\.html$/,
             loader: "html"
-        },{
+        }, {
             // ASSET LOADER
             // Reference: https://github.com/webpack/file-loader
             // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
@@ -122,10 +122,10 @@ module.exports = function makeWebpackConfig(options) {
             // You can add here any file extension you want to get copied to your output
             test: /\.(png|jpg|jpeg|gif)$/,
             loader: 'file'
-        },{
+        }, {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&minetype=application/font-woff"
-        },{
+        }, {
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "file-loader"
         }]
@@ -143,10 +143,10 @@ module.exports = function makeWebpackConfig(options) {
                 /\.test\.js$/
             ],
             loader: 'isparta-instrumenter'
-        })
+        });
     }
 
-    if(!TEST) {
+    if (!TEST) {
         // CSS LOADER
         // Reference: https://github.com/webpack/css-loader
         // Allow loading css through js
@@ -215,16 +215,16 @@ module.exports = function makeWebpackConfig(options) {
         })
     ];
 
-	if (!TEST && !BUILD) {
-		config.eslint = {
-			parser: 'babel-eslint'
-		};
-		config.module.loaders.push({
-			test: /\.js$/,
-			exclude: /node_modules|bower_components|vendor/,
-			loaders: ['eslint']
-		});
-	}
+    if (!TEST && !BUILD) {
+        config.eslint = {
+            parser: 'babel-eslint'
+        };
+        config.module.loaders.push({
+            test: /\.js$/,
+            exclude: /node_modules|bower_components|vendor/,
+            loaders: ['eslint']
+        });
+    }
 
     // Skip rendering index.html in test mode
     if (!TEST) {
@@ -244,7 +244,7 @@ module.exports = function makeWebpackConfig(options) {
                     modRewrite(['^[^\\.]*$ /index.html [L]'])
                 ]
             })
-        )
+        );
     }
 
     // Add build specific plugins
@@ -261,7 +261,7 @@ module.exports = function makeWebpackConfig(options) {
             // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
             // Minify all javascript, switch loaders to minimizing mode
             new webpack.optimize.UglifyJsPlugin()
-        )
+        );
     }
 
     /**
