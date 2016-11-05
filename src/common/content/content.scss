@@ -1,0 +1,31 @@
+content {
+    .content {
+        background-color: rgb(255, 255, 255);
+        padding: 20px 100px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: background-color 0.4s ease-out;
+        transition-delay: 0.5s;
+    }
+    .home {
+        background-color: rgb(255, 255, 255);
+    }
+    .brothers {
+        background-color: rgb(121, 219, 116);
+    }
+    .crowd {
+        background-color: rgb(215, 0, 67);
+    }
+    .jesus {
+        background-color: rgb(255, 111, 1);
+    }
+    .challenge {
+        background-color: rgb(20, 195, 164);
+    }
+    .selector {
+        background-color: rgb(255, 255, 85);
+    }
+}

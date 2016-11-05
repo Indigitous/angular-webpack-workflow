@@ -45,7 +45,7 @@ class NavController {
     }
 
     progress() {
-        var percentage = (this.currentPageIndex() / NavController.pages.length) * 100;
+        var percentage = (this.currentPageIndex() / (NavController.pages.length - 1)) * 100;
         return { width: percentage + '%' };
     }
 }

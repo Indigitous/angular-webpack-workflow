@@ -12,6 +12,7 @@ nav {
         font-size: 50px;
         transition: background-color 0.2s, left 0.5s, right 0.5s;
         margin-top: -50px;
+        cursor: pointer;
         i {
             display: inline-block;
             vertical-align: middle
@@ -42,7 +43,7 @@ nav {
         height:3px;
         margin: 0;
         .bar {
-            transition: width 1s ease-in;
+            transition: width 1s ease-out;
             height: 3px;
             background-color: green;
         }
