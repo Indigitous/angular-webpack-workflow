@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A workflow for Angular made with Webpack",
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail -p",
-    "start": "webpack --progress --config webpack.config.js --colors --watch",
+    "build": "webpack --config webpack.build.js --bail --progress",
+    "start": "webpack-dev-server --progress --config webpack.config.js --hot --inline",
     "test": "karma start",
     "test:live": "karma start --auto-watch --no-single-run"
   },

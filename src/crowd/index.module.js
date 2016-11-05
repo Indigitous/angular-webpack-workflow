@@ -1,5 +1,5 @@
-import crowd from './crowd.component';
+import component from './crowd.component';
 
 export default angular.module('app.crowd', [
-    crowd
+    component
 ]).name;

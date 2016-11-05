@@ -1,4 +1,4 @@
-import nav from './nav/index.nav';
+import nav from './nav/nav.component';
 
 export default angular.module('app.common', [
     nav

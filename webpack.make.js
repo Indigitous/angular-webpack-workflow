@@ -269,7 +269,6 @@ module.exports = function makeWebpackConfig(options) {
             }),
             new HtmlWebpackPlugin({
                 template: './src/index.html',
-                favicon: './src/images/mpdx-favicon.png',
                 inject: 'body',
                 minify: (BUILD ? {
                     html5: true
@@ -308,13 +307,7 @@ module.exports = function makeWebpackConfig(options) {
             colors: true,
             chunk: false
         },
-        historyApiFallback: true,
-        proxy: {
-            '/api': {
-                target: 'http://192.168.99.100:3000',
-                secure: false
-            }
-        }
+        historyApiFallback: true
     };
 
     return config;

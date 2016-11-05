@@ -2,9 +2,9 @@
 export default class Routes {
     static config($stateProvider) {
         $stateProvider.state({
-            name: 'main',
+            name: 'home',
             url: '/',
-            component: 'main'
+            component: 'home'
         }).state({
             name: 'brothers',
             url: '/brothers',
@@ -22,9 +22,9 @@ export default class Routes {
             url: '/jesus',
             component: 'jesus'
         }).state({
-            name: 'selection',
-            url: '/selection',
-            component: 'selection'
+            name: 'selector',
+            url: '/selector',
+            component: 'selector'
         });
     }
 }

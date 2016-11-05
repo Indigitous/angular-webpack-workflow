@@ -1,5 +1,5 @@
-import brothers from './brothers.component';
+import component from './brothers.component';
 
 export default angular.module('app.brothers', [
-    brothers
+    component
 ]).name;

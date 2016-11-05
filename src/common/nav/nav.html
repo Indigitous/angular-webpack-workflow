@@ -1,3 +1,6 @@
-<div>
-    Brothers
-</div>
+<a class="block-nav left" ng-click="$ctrl.back()" ng-class="{ 'faded' : !$ctrl.canGoBack() }">
+    <i class="fa fa-angle-left"></i>
+</a>
+<a class="block-nav right" ng-click="$ctrl.forward()" ng-class="{ 'faded' : !$ctrl.canGoForward() }">
+    <i class="fa fa-angle-right"></i>
+</a>

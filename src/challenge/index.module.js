@@ -1,5 +1,5 @@
-import challenge from './selection.component';
+import component from './challenge.component';
 
 export default angular.module('app.challenge', [
-    challenge
+    component
 ]).name;
