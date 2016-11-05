@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
-# fix ENOENT: no such file or directory, scandir '/home/travis/build/Indigitous/who-do-you-say-jesus-is/node_modules/node-sass/vendor'
-mkdir 'node_modules/node-sass/vendor'
-
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
