@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
-echo '-- run eslint --'
-eslint .
-
 if [ "$TRAVIS_BRANCH" = "master" ]
 then
     echo '-- build production --'
