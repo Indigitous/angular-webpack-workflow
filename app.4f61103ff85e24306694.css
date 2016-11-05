@@ -187,23 +187,26 @@ speech .button {
       text-decoration: none; }
 
 speech .message {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
   position: relative;
   font-family: 'Prociono', serif;
-  font-size: 1.4em;
   line-height: 1.8em;
-  text-align: justify;
-  background-color: #fff;
-  overflow: hidden;
   transition: all 0.5s ease-in-out;
-  padding: 2em 5em;
-  height: 15em;
   opacity: 1; }
+  speech .message .content {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    height: 15em;
+    background-color: #fff;
+    padding: 2em 5em;
+    font-size: 1.1em;
+    text-align: justify;
+    overflow: hidden;
+    transition: all 0.5s ease-out;
+    z-index: 1000; }
   speech .message .hide-message {
     display: -ms-flexbox;
     display: flex;
@@ -221,12 +224,14 @@ speech .message {
     margin-top: -1em;
     cursor: pointer;
     left: 0;
-    transition: left 0.5s ease-out; }
-  speech .message.ng-hide-remove {
+    transition: left 0.5s ease-out 0.5s; }
+  speech .message.ng-hide-remove .content, speech .message.ng-hide-add .content {
     height: 0;
     opacity: 0; }
-    speech .message.ng-hide-remove .hide-message {
-      left: -1.5em; }
+  speech .message.ng-hide-remove .hide-message, speech .message.ng-hide-add .hide-message {
+    left: -1.5em; }
+  speech .message.ng-hide-add .hide-message {
+    transition: left 0.5s ease-out; }
 body {
   font-size: x-large; }
 
