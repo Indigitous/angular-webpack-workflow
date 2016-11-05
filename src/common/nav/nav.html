@@ -4,3 +4,6 @@
 <a class="block-nav right" ng-click="$ctrl.forward()" ng-class="{ 'faded' : !$ctrl.canGoForward() }">
     <i class="fa fa-angle-right"></i>
 </a>
+<div class="progress">
+    <div class="bar" ng-style="$ctrl.progress()"></div>
+</div>

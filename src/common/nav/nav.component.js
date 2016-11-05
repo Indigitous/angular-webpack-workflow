@@ -43,6 +43,11 @@ class NavController {
         if (!this.canGoForward()) { return; }
         this.$state.go(NavController.pages[this.currentPageIndex() + 1]);
     }
+
+    progress() {
+        var percentage = (this.currentPageIndex() / NavController.pages.length) * 100;
+        return { width: percentage + '%' };
+    }
 }
 const Nav = {
     template: require('./nav.html'),
