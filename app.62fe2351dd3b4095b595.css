@@ -1,0 +1,91 @@
+home {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  height: 100%;
+  color: #fff; }
+content .content {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color 0.4s ease-out;
+  transition-delay: 0.5s; }
+  content .content > div {
+    height: 100%; }
+
+content .home {
+  background-image: url(/23b805a5f350d975e534f37dcdd3569c.svg);
+  background-size: cover;
+  background-position: 0%;
+  background-repeat: no-repeat;
+  transition: background-position 0.5s; }
+
+content .home-add {
+  background-position: 100%; }
+
+content .brothers {
+  background-color: #79db74; }
+
+content .crowd {
+  background-color: #d70043; }
+
+content .jesus {
+  background-color: #ff6f01; }
+
+content .challenge {
+  background-color: #14c3a4; }
+
+content .selector {
+  background-color: #ffff55; }
+nav .block-nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  position: fixed;
+  top: 50%;
+  height: 100px;
+  width: 80px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 50px;
+  transition: background-color 0.2s, left 0.5s, right 0.5s;
+  margin-top: -50px;
+  cursor: pointer; }
+  nav .block-nav i {
+    display: inline-block;
+    vertical-align: middle; }
+  nav .block-nav.left {
+    left: 0; }
+    nav .block-nav.left.faded {
+      left: -80px; }
+  nav .block-nav.right {
+    right: 0; }
+    nav .block-nav.right.faded {
+      right: -80px; }
+  nav .block-nav:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none; }
+
+nav .progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 3px;
+  margin: 0; }
+  nav .progress .bar {
+    transition: width 1s ease-out;
+    height: 3px;
+    background-color: green; }
+
+/*# sourceMappingURL=app.62fe2351dd3b4095b595.css.map*/
