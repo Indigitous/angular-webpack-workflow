@@ -14,3 +14,4 @@ else
 fi
 npm run build
 echo '<!-- COMMIT:' $TRAVIS_COMMIT '-->' >> out/index.html
+echo 'whodoisayjesusis.com' > out/CNAME
