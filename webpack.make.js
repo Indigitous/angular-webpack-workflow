@@ -76,7 +76,7 @@ module.exports = function makeWebpackConfig(options) {
         alias: {
             config: path.join(__dirname, 'config', configEnv + '.js')
         },
-        modules: [path.join(__dirname), "node_modules", "bower_components", "vendor"]
+        modules: [path.join(__dirname), "node_modules"]
     };
 
     /**
@@ -113,7 +113,7 @@ module.exports = function makeWebpackConfig(options) {
             // Compiles ES6 and ES7 into ES5 code
             test: /\.js$/,
             loaders: ['babel'],
-            exclude: /node_modules|bower_components|vendor\//
+            exclude: /node_modules\//
         }, {
             // HTML LOADER
             // Reference: https://github.com/WearyMonkey/ngtemplate-loader
@@ -209,7 +209,7 @@ module.exports = function makeWebpackConfig(options) {
         config.module.loaders.push({
             enforce: "pre",
             test: /\.js$/,
-            exclude: /node_modules|bower_components|vendor\//,
+            exclude: /node_modules\//,
             loaders: ['eslint']
         });
     }
@@ -247,7 +247,7 @@ module.exports = function makeWebpackConfig(options) {
             parser: 'babel-eslint'
         },
         sassLoader: {
-            includePaths: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, 'bower_components'), path.resolve(__dirname, 'vendor')]
+            includePaths: [path.resolve(__dirname, 'node_modules')]
         }
         // ...other configs that used to directly on `modules.exports`
     };
