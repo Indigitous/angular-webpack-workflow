@@ -3,6 +3,7 @@ require('./nav.scss');
 class NavController {
     static pages = [
         'home',
+        'question',
         'brothers',
         'crowd',
         'jesus',
@@ -10,16 +11,18 @@ class NavController {
         'selector'
     ];
 
-    constructor($state) {
+    constructor($document, $state) {
+        this.$document = $document;
         this.$state = $state;
     }
+
 
     currentPageIndex() {
         return NavController.pages.indexOf(this.$state.$current.name);
     }
 
     canGoBack() {
-        if (this.currentPageIndex() > 0) {
+        if (this.currentPageIndex() > 1) {
             return true;
         } else {
             return false;
@@ -36,16 +39,32 @@ class NavController {
 
     back() {
         if (!this.canGoBack()) { return; }
-        this.$state.go(NavController.pages[this.currentPageIndex() - 1]);
+        let previousPageName = NavController.pages[this.currentPageIndex()];
+        let pageName = NavController.pages[this.currentPageIndex() - 1];
+        this.$state.go(pageName);
+        this.playAudio(previousPageName, pageName);
     }
 
     forward() {
         if (!this.canGoForward()) { return; }
-        this.$state.go(NavController.pages[this.currentPageIndex() + 1]);
+        let previousPageName = NavController.pages[this.currentPageIndex()];
+        let pageName = NavController.pages[this.currentPageIndex() + 1];
+        this.$state.go(pageName);
+        this.playAudio(previousPageName, pageName);
+    }
+
+    playAudio(previousPage, page) {
+        let previousElement = this.$document[0].getElementById(`${previousPage}Audio`);
+        let element = this.$document[0].getElementById(`${page}Audio`);
+        if (previousElement) { previousElement.pause(); }
+        if (element) {
+            element.currentTime = 0;
+            element.play();
+        }
     }
 
     progress() {
-        var percentage = (this.currentPageIndex() / (NavController.pages.length - 1)) * 100;
+        var percentage = ((this.currentPageIndex() - 1) / (NavController.pages.length - 2)) * 100;
         return { width: percentage + '%' };
     }
 }

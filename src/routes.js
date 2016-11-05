@@ -6,6 +6,10 @@ export default class Routes {
             url: '/',
             component: 'home'
         }).state({
+            name: 'question',
+            url: '/question',
+            component: 'question'
+        }).state({
             name: 'brothers',
             url: '/brothers',
             component: 'brothers'

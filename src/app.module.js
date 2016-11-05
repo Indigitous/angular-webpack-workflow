@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 import home from './home/index.module';
+import question from './question/index.module';
 import brothers from './brothers/index.module';
 import crowds from './crowd/index.module';
 import jesus from './jesus/index.module';
@@ -16,6 +17,7 @@ require('./app.scss');
 export default angular
     .module('app', [
         home,
+        question,
         brothers,
         crowds,
         jesus,

@@ -1,16 +1,13 @@
 require('./home.scss');
 
 class HomeController {
-    constructor() {
-        this.welcomeMessage = 'Hello World';
-    }
 }
 
-const Home = {
+const home = {
     template: require('./home.html'),
     controller: HomeController
 };
 
 export default angular.module('app.home.component', [])
-    .component('home', Home)
+    .component('home', home)
     .name;
