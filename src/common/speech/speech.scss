@@ -37,20 +37,24 @@ speech {
         }
     }
     .message {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         position: relative;
         font-family: 'Prociono', serif;
-        font-size: 1.4em;
         line-height: 1.8em;
-        text-align: justify;
-        background-color: #fff;
-        overflow: hidden;
         transition: all 0.5s ease-in-out;
-        padding: 2em 5em;
-        height: 15em;
         opacity: 1;
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 15em;
+            background-color: #fff;
+            padding: 2em 5em;
+            font-size: 1.1em;
+            text-align: justify;
+            overflow: hidden;
+            transition: all 0.5s ease-out;
+            z-index: 1000;
+        }
         .hide-message {
             display: flex;
             align-items: center;
@@ -65,13 +69,20 @@ speech {
             margin-top: -1em;
             cursor: pointer;
             left: 0;
-            transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out 0.5s;
         }
-        &.ng-hide-remove {
-            height: 0;
-            opacity: 0;
+        &.ng-hide-remove, &.ng-hide-add {
+            .content {
+                height: 0;
+                opacity: 0;
+            }
             .hide-message {
                 left: -1.5em;
+            }
+        }
+        &.ng-hide-add {
+            .hide-message {
+                transition: left 0.5s ease-out;
             }
         }
     }
