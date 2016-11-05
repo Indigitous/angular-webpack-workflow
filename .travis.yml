@@ -9,6 +9,7 @@ before_install:
   - npm install -g yarn --cache-min 999999999
 install:
   - yarn
+  - npm rebuild node-sass
 branches:
   only:
   - master
