@@ -1,0 +1,36 @@
+nav {
+    .block-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 50%;
+        height: 100px;
+        width: 80px;
+        background-color: rgba(0,0,0,0.2);
+        color: #fff;
+        font-size: 50px;
+        transition: background-color 0.2s, left 0.5s, right 0.5s;
+        margin-top: -50px;
+        i {
+            display: inline-block;
+            vertical-align: middle
+        }
+        &.left {
+            left: 0;
+            &.faded {
+                left: -80px;
+            }
+        }
+        &.right {
+            right: 0;
+            &.faded {
+                right: -80px;
+            }
+        }
+        &:hover {
+            background-color: rgba(0,0,0,0.3);
+            text-decoration: none;
+        }
+    }
+}
