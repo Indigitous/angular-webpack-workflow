@@ -13,4 +13,4 @@ else
     export NODE_ENV=staging
 fi
 npm run build
-echo '<!-- COMMIT:' $TRAVIS_COMMIT '-->' >> public/index.html
+echo '<!-- COMMIT:' $TRAVIS_COMMIT '-->' >> out/index.html
