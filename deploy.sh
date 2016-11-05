@@ -34,6 +34,7 @@ echo "Run our compile script"
 doCompile
 
 echo "Now let's go have some fun with the cloned repo"
+ls out
 cd out
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
