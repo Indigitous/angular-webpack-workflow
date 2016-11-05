@@ -268,8 +268,7 @@ module.exports = function makeWebpackConfig(options) {
                 options: loaderOptions
             }),
             new HtmlWebpackPlugin({
-                baseUrl: process.env.NODE_ENV === 'production' ? '/who-do-you-say-jesus-is/' : '/',
-                template: './src/index.ejs',
+                template: './src/index.html',
                 inject: 'body',
                 minify: (BUILD ? {
                     html5: true
