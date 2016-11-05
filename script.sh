@@ -10,5 +10,6 @@ else
     export NODE_ENV=staging
 fi
 npm run build
+cp src/404.html out
 echo '<!-- COMMIT:' $TRAVIS_COMMIT '-->' >> out/index.html
 echo 'whodoisayjesusis.com' > out/CNAME
