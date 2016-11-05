@@ -1,9 +1,11 @@
 require('./speech.scss');
 
 class SpeechController {
-    constructor($timeout) {
+    constructor($timeout, navService) {
         this.messageVisible = false;
+        this.buttonVisible = true;
         this.visibleTransition = this.visible || true;
+        this.navService = navService;
         if (this.visibleTransition) {
             this.visibleTransition = false;
             $timeout(() => {
@@ -20,8 +22,14 @@ class SpeechController {
 
     showMessage() {
         this.messageVisible = true;
+        //this.buttonVisible = false;
+        this.navService.hideNav();
     }
 
+    hideMessage() {
+        this.messageVisible = false;
+        this.navService.showNav();
+    }
 }
 const Speech = {
     template: require('./speech.html'),

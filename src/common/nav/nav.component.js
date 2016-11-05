@@ -11,9 +11,10 @@ class NavController {
         'selector'
     ];
 
-    constructor($document, $state) {
+    constructor($document, $state, navService) {
         this.$document = $document;
         this.$state = $state;
+        this.navService = navService;
     }
 
 
@@ -72,6 +73,10 @@ class NavController {
         var percentage = ((this.currentPageIndex() - 1) / (NavController.pages.length - 2)) * 100;
         if (this.currentPageIndex() === 0) { percentage = 0; }
         return { width: percentage + '%' };
+    }
+
+    isVisible() {
+        return !this.navService.hidden;
     }
 }
 const Nav = {
