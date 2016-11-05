@@ -23,8 +23,9 @@
   "homepage": "https://github.com/mike-allison/angular-webpack-workflow",
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-ui-router": "1.0.0-beta.3",
-    "angular-gettext": "^2.3.8"
+    "angular-animate": "^1.5.8",
+    "angular-gettext": "^2.3.8",
+    "angular-ui-router": "1.0.0-beta.3"
   },
   "devDependencies": {
     "angular-gettext-tools": "^2.3.0",

@@ -1,3 +1,5 @@
+require('./home.scss');
+
 class HomeController {
     constructor() {
         this.welcomeMessage = 'Hello World';

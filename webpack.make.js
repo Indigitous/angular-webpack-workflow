@@ -119,7 +119,7 @@ module.exports = function makeWebpackConfig(options) {
             // Reference: https://github.com/WearyMonkey/ngtemplate-loader
             // Allow loading html through js
             test: /\.html$/,
-            loader: "html"
+            loader: "html?attrs[]=img:src&attrs[]=audio:src"
         }, {
             // ASSET LOADER
             // Reference: https://github.com/webpack/file-loader
@@ -127,7 +127,7 @@ module.exports = function makeWebpackConfig(options) {
             // Rename the file using the asset hash
             // Pass along the updated reference to your code
             // You can add here any file extension you want to get copied to your output
-            test: /\.(png|jpg|jpeg|gif)$/,
+            test: /\.(png|jpg|jpeg|gif|mp3)$/,
             loader: 'file'
         }, {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
