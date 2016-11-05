@@ -56,10 +56,15 @@ class NavController {
     playAudio(previousPage, page) {
         let previousElement = this.$document[0].getElementById(`${previousPage}Audio`);
         let element = this.$document[0].getElementById(`${page}Audio`);
+        let transitionElement = this.$document[0].getElementById('transitionAudio');
         if (previousElement) { previousElement.pause(); }
         if (element) {
             element.currentTime = 0;
             element.play();
+        }
+        if (transitionElement) {
+            transitionElement.currentTime = 0.2;
+            transitionElement.play();
         }
     }
 
