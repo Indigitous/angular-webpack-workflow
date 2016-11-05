@@ -1,3 +1,5 @@
+require('./brothers.scss');
+
 class BrothersController {
     constructor() {
         this.welcomeMessage = 'Hello World';

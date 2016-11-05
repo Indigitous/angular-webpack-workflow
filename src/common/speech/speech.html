@@ -1,0 +1,8 @@
+<div class="button" style="left: {{$ctrl.leftAlign}};">
+    <a ng-class="{ 'transition': !$ctrl.visibleTransition, 'hide-button': $ctrl.messageVisible }" ng-click="$ctrl.showMessage()"><i class="fa fa-comments"></i></a>
+</div>
+<div class="message" ng-show="$ctrl.messageVisible">
+    <div class="content">
+        {{$ctrl.message}}
+    </div>
+</div>
