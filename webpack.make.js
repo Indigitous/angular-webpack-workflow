@@ -51,7 +51,7 @@ module.exports = function makeWebpackConfig(options) {
     } else {
         config.output = {
             // Absolute output directory
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'out'),
 
             // Output path from the view of the page
             // Uses webpack-dev-server in development
