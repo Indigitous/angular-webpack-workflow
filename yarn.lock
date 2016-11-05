@@ -909,10 +909,6 @@ balanced-match@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.1.0.tgz#b504bd05869b39259dd0c5efc35d843176dccc4a"
 
-base-href-webpack-plugin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/base-href-webpack-plugin/-/base-href-webpack-plugin-1.0.0.tgz#cbe8f15229dfbaf846fb29f2ac0948508697941d"
-
 base64-arraybuffer@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.1.2.tgz#474df4a9f2da24e05df3158c3b1db3c3cd46a154"
