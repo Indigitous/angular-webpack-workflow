@@ -65,6 +65,7 @@ class NavController {
 
     progress() {
         var percentage = ((this.currentPageIndex() - 1) / (NavController.pages.length - 2)) * 100;
+        if (this.currentPageIndex() === 0) { percentage = 0; }
         return { width: percentage + '%' };
     }
 }
