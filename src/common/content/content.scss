@@ -1,40 +1,14 @@
 content {
-    .content {
-        background-color: rgb(255, 255, 255);
+    div[ui-view] {
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        transition: background-color 0.4s ease-out;
-        transition-delay: 0.5s;
-        > div {
-            height: 100%;
+        margin-right: 0;
+        background-color: #000;
+        &.ng-enter, &.ng-leave {
+          transition:all 1s;
         }
-    }
-    .home {
-        background-image: url('./home.svg');
-        background-size: cover;
-        background-position: 0%;
-        background-repeat: no-repeat;
-        transition: background-position 0.5s;
-    }
-    .home-add {
-        background-position: 100%;
-    }
-    .brothers {
-        background-color: rgb(121, 219, 116);
-    }
-    .crowd {
-        background-color: rgb(215, 0, 67);
-    }
-    .jesus {
-        background-color: rgb(255, 111, 1);
-    }
-    .challenge {
-        background-color: rgb(20, 195, 164);
-    }
-    .selector {
-        background-color: rgb(255, 255, 85);
     }
 }

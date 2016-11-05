@@ -1,17 +1,18 @@
 nav {
     .block-nav {
+        z-index: 100;
         display: flex;
         align-items: center;
         justify-content: center;
         position: fixed;
         top: 50%;
-        height: 100px;
-        width: 80px;
+        height: 2em;
+        width: 1.5em;
         background-color: rgba(0,0,0,0.2);
         color: #fff;
         font-size: 50px;
         transition: background-color 0.2s, left 0.5s, right 0.5s;
-        margin-top: -50px;
+        margin-top: -1em;
         cursor: pointer;
         i {
             display: inline-block;
@@ -20,13 +21,13 @@ nav {
         &.left {
             left: 0;
             &.faded {
-                left: -80px;
+                left: -1.5em;
             }
         }
         &.right {
             right: 0;
             &.faded {
-                right: -80px;
+                right: -1.5em;
             }
         }
         &:hover {
@@ -40,11 +41,11 @@ nav {
         left: 0;
         right: 0;
         background-color: rgba(0,0,0,0.2);
-        height:3px;
+        height:0.25em;
         margin: 0;
         .bar {
             transition: width 1s ease-out;
-            height: 3px;
+            height: 0.25em;
             background-color: green;
         }
     }

@@ -4,4 +4,50 @@ home {
   justify-content: center;
   height: 100%;
   color: #fff;
+  font-family: 'Prociono', serif;
+  h1 {
+      font-size: 3em;
+      padding: 0.8em;
+      box-shadow: inset 0 0 0 0.2em #fff;
+      opacity: 1;
+      transition: opacity 0.2s ease-out 0.3s, box-shadow 0.5s 0.7s;
+  }
+  .background {
+      z-index: -1;
+      background-image: url('home.svg');
+      background-size: cover;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      margin-right: 0;
+      transition: margin 0.3s ease-out;
+  }
+}
+[ui-view].ng-enter {
+    home {
+        .background {
+            margin-right: 100%;
+            transition: none;
+        }
+        h1 {
+            opacity: 0;
+            transition: none;
+            box-shadow: none;
+        }
+    }
+}
+[ui-view].ng-leave {
+    home {
+        .background {
+            margin-left: 100%;
+            transition-delay: 0.2s;
+        }
+        h1 {
+            opacity: 0;
+            box-shadow: none;
+            transition: opacity 0.2s ease-out 0.7s, box-shadow 0.5s 0.3s;
+        }
+    }
 }
