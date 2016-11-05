@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Prociono);home {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  height: 100%;
+  font-size: 0.8em;
+  color: #fff;
+  text-align: center; }
+  home .content {
+    transition: all 0.2s;
+    opacity: 1; }
+    home .content h3 {
+      font-size: 2em; }
+      home .content h3 i {
+        margin-right: 0.3em; }
+
+[ui-view].ng-enter home .content {
+  opacity: 0; }
+
+[ui-view].ng-leave home .content {
+  opacity: 0; }
+question {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  height: 100%;
+  color: #fff;
+  font-family: 'Prociono', serif; }
+  question h1 {
+    font-size: 3em;
+    padding: 0.8em;
+    box-shadow: inset 0 0 0 0.2em #fff;
+    opacity: 1;
+    transition: opacity 0.2s ease-out 0.3s, box-shadow 0.5s 0.7s; }
+  question .background {
+    z-index: -1;
+    background-image: url(/23b805a5f350d975e534f37dcdd3569c.svg);
+    background-size: cover;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    margin-right: 0;
+    transition: margin 0.3s ease-out; }
+
+[ui-view].ng-enter question .background {
+  margin-right: 100%;
+  transition: none; }
+
+[ui-view].ng-enter question h1 {
+  opacity: 0;
+  transition: none;
+  box-shadow: none; }
+
+[ui-view].ng-leave question .background {
+  margin-left: 100%;
+  transition-delay: 0.2s; }
+
+[ui-view].ng-leave question h1 {
+  opacity: 0;
+  box-shadow: none;
+  transition: opacity 0.2s ease-out 0.7s, box-shadow 0.5s 0.3s; }
+content div[ui-view] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-right: 0;
+  background-color: #000; }
+  content div[ui-view].ng-enter, content div[ui-view].ng-leave {
+    transition: all 1s; }
+nav .block-nav {
+  z-index: 100;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  position: fixed;
+  top: 50%;
+  height: 2em;
+  width: 1.5em;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 50px;
+  transition: background-color 0.2s, left 0.5s, right 0.5s;
+  margin-top: -1em;
+  cursor: pointer; }
+  nav .block-nav i {
+    display: inline-block;
+    vertical-align: middle; }
+  nav .block-nav.left {
+    left: 0; }
+    nav .block-nav.left.faded {
+      left: -1.5em; }
+  nav .block-nav.right {
+    right: 0; }
+    nav .block-nav.right.faded {
+      right: -1.5em; }
+  nav .block-nav:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none; }
+
+nav .progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 0.25em;
+  margin: 0; }
+  nav .progress .bar {
+    transition: width 1s ease-out;
+    height: 0.25em;
+    background-color: green; }
+body {
+  font-size: x-large; }
+
+@media (max-width: 1000px) {
+  body {
+    font-size: large; } }
+
+@media (max-width: 500px) {
+  body {
+    font-size: medium; } }
+
+/*# sourceMappingURL=app.63d8db2f4a029bc2ad8f.css.map*/
