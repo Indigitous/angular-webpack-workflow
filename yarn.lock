@@ -3646,7 +3646,7 @@ node-pre-gyp@^0.6.29:
     tar "~2.2.1"
     tar-pack "~3.3.0"
 
-node-sass@^3.9.3:
+node-sass@^3.11.1:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-3.11.1.tgz#0b25699663cc9d616e8c6fb874e7d9b25e5a8e20"
   dependencies:
