@@ -8,6 +8,6 @@ const Challenge = {
     controller: ChallengeController
 };
 
-export default angular.module('app.challenge', [])
+export default angular.module('app.challenge.component', [])
     .component('challenge', Challenge)
     .name;

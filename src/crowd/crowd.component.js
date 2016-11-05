@@ -8,6 +8,6 @@ const Crowd = {
     controller: CrowdController
 };
 
-export default angular.module('app.crowd', [])
+export default angular.module('app.crowd.component', [])
     .component('crowd', Crowd)
     .name;

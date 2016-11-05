@@ -8,6 +8,6 @@ const Jesus = {
     controller: JesusController
 };
 
-export default angular.module('app.jesus', [])
+export default angular.module('app.jesus.component', [])
     .component('jesus', Jesus)
     .name;

@@ -8,6 +8,6 @@ const Brothers = {
     controller: BrothersController
 };
 
-export default angular.module('app.brothers.component', [])
+export default angular.module('app.brothers', [])
     .component('brothers', Brothers)
     .name;
