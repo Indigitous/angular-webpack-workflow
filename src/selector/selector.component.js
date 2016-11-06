@@ -1,6 +1,9 @@
 require('./selector.scss');
 
 class SelectorController {
+    constructor(navService) {
+        navService.hideNav();
+    }
 }
 const Selector = {
     template: require('./selector.html'),
