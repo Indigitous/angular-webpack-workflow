@@ -9,7 +9,7 @@
       flex-direction: column;
   height: 100%;
   font-size: 0.8em;
-  color: #fff;
+  color: #000;
   text-align: center; }
   home .content {
     transition: all 0.2s;
@@ -87,30 +87,34 @@ brothers {
     position: fixed;
     display: block;
     margin-top: 0;
-    transition: margin 0.5s ease-out; }
+    transition: bottom 0.5s ease-out; }
     brothers img.brother-1 {
       height: 30em;
-      left: 2em; }
+      left: 2em;
+      bottom: 0; }
     brothers img.brother-2 {
       height: 30em;
-      left: 11em; }
+      left: 11em;
+      bottom: 0; }
     brothers img.brother-3 {
       height: 30em;
-      right: 3em; }
+      right: 3em;
+      bottom: 0; }
     brothers img.jesus {
       height: 30em;
-      right: 8em; }
+      right: 8em;
+      bottom: 0; }
 
 [ui-view].ng-enter brothers {
   opacity: 0; }
   [ui-view].ng-enter brothers img.brother-1 {
-    margin-top: 2em; }
+    bottom: 2em; }
   [ui-view].ng-enter brothers img.brother-2 {
-    margin-top: -1em; }
+    bottom: -1em; }
   [ui-view].ng-enter brothers img.brother-3 {
-    margin-top: 5em; }
+    bottom: 5em; }
   [ui-view].ng-enter brothers img.jesus {
-    margin-top: -6em; }
+    bottom: -6em; }
 
 [ui-view].ng-leave brothers {
   opacity: 0; }
