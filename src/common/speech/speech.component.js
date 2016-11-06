@@ -3,41 +3,43 @@ require('./speech.scss');
 class SpeechController {
     constructor($timeout, navService) {
         this.messageVisible = false;
-        this.buttonVisible = true;
-        this.visibleTransition = this.visible || true;
         this.navService = navService;
-        if (this.visibleTransition) {
-            this.visibleTransition = false;
-            $timeout(() => {
-                this.visibleTransition = true;
-            }, 2000);
-        }
-
         if (this.left) {
             this.leftAlign = `${this.left}em`;
         } else {
             this.leftAlign = "'auto'";
         }
+
+        if (this.right) {
+            this.rightAlign = `${this.right}em`;
+        } else {
+            this.rightAlign = "'auto'";
+        }
     }
 
     showMessage() {
         this.messageVisible = true;
-        //this.buttonVisible = false;
+        this.buttonVisible = false;
         this.navService.hideNav();
     }
 
     hideMessage() {
         this.messageVisible = false;
         this.navService.showNav();
+        if (angular.isFunction(this.onClose)) {
+            this.onClose();
+        }
     }
 }
 const Speech = {
     template: require('./speech.html'),
     controller: SpeechController,
     bindings: {
-        'visible': '<',
+        'buttonVisible': '<',
         'left': '@',
-        'message': '@'
+        'right': '@',
+        'message': '@',
+        'onClose': '&'
     }
 };
 

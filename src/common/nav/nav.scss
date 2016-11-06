@@ -11,7 +11,7 @@ nav {
         background-color: rgba(0,0,0,0.2);
         color: #fff;
         font-size: 50px;
-        transition: background-color 0.2s, left 0.5s, right 0.5s;
+        transition: all 0.5s ease-out;
         margin-top: -1em;
         cursor: pointer;
         i {
@@ -20,13 +20,13 @@ nav {
         }
         &.left {
             left: 0;
-            &.faded {
+            &.ng-hide-remove, &.ng-hide-add-active {
                 left: -1.5em;
             }
         }
         &.right {
             right: 0;
-            &.faded {
+            &.ng-hide-remove, &.ng-hide-add-active {
                 right: -1.5em;
             }
         }

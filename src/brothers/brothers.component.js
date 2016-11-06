@@ -2,7 +2,13 @@ require('./brothers.scss');
 
 class BrothersController {
     constructor() {
-        this.welcomeMessage = 'Hello World';
+        this.bubbleId = 0;
+        this.bubbles = [true];
+    }
+
+    nextBubble() {
+        this.bubbleId += 1;
+        this.bubbles[this.bubbleId] = true;
     }
 }
 const Brothers = {

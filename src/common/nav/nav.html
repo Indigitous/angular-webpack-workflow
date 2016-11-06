@@ -1,8 +1,8 @@
-<div class="player" ng-show="$ctrl.isVisible()">
-    <a class="block-nav left" ng-click="$ctrl.back()" ng-class="{ 'faded' : !$ctrl.canGoBack() }">
+<div class="player">
+    <a class="block-nav left" ng-click="$ctrl.back()" ng-show="$ctrl.isVisible() && $ctrl.canGoBack()">
         <i class="fa fa-angle-left"></i>
     </a>
-    <a class="block-nav right" ng-click="$ctrl.forward()" ng-class="{ 'faded' : !$ctrl.canGoForward() }">
+    <a class="block-nav right" ng-click="$ctrl.forward()" ng-show="$ctrl.isVisible() && $ctrl.canGoForward()">
         <i class="fa fa-angle-right"></i>
     </a>
 </div>
