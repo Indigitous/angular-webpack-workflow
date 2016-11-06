@@ -1,7 +1,6 @@
+require('./jesus.scss');
+
 class JesusController {
-    constructor() {
-        this.welcomeMessage = 'Hello World';
-    }
 }
 const Jesus = {
     template: require('./jesus.html'),

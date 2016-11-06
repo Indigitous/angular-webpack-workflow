@@ -1,3 +1,5 @@
+require('./challenge.scss');
+
 class ChallengeController {
     constructor() {
         this.welcomeMessage = 'Hello World';

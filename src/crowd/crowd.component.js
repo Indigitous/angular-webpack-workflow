@@ -1,7 +1,6 @@
+require('./crowd.scss');
+
 class CrowdController {
-    constructor() {
-        this.welcomeMessage = 'Hello World';
-    }
 }
 const Crowd = {
     template: require('./crowd.html'),

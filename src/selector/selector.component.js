@@ -1,7 +1,6 @@
+require('./selector.scss');
+
 class SelectorController {
-    constructor() {
-        this.welcomeMessage = 'Hello World';
-    }
 }
 const Selector = {
     template: require('./selector.html'),

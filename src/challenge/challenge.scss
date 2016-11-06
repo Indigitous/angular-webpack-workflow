@@ -1,0 +1,54 @@
+challenge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  font-family: 'Prociono', serif;
+  h1 {
+      font-size: 2em;
+      padding: 0.8em;
+      box-shadow: inset 0 0 0 0.2em #fff;
+      opacity: 1;
+      transition: opacity 0.2s ease-out 0.3s, box-shadow 0.5s 0.7s;
+      margin: 0 1.5em;
+  }
+  .background {
+      z-index: -1;
+      background-image: url('../question/question.svg');
+      background-size: cover;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      margin-right: 0;
+      transition: margin 0.3s ease-out;
+  }
+}
+[ui-view].ng-enter {
+    challenge {
+        .background {
+            margin-right: 100%;
+            transition: none;
+        }
+        h1 {
+            opacity: 0;
+            transition: none;
+            box-shadow: none;
+        }
+    }
+}
+[ui-view].ng-leave {
+    challenge {
+        .background {
+            margin-left: 100%;
+            transition-delay: 0.2s;
+        }
+        h1 {
+            opacity: 0;
+            box-shadow: none;
+            transition: opacity 0.2s ease-out 0.7s, box-shadow 0.5s 0.3s;
+        }
+    }
+}

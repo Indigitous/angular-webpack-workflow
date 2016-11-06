@@ -1,0 +1,26 @@
+jesus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  color: #000;
+  font-family: 'Prociono', serif;
+  transition: opacity 0.5s;
+  opacity: 1;
+  h1 {
+      font-size: 2em;
+      padding: 0.8em;
+  }
+}
+
+[ui-view].ng-enter {
+    jesus {
+        opacity: 0;
+    }
+}
+[ui-view].ng-leave {
+    jesus {
+        opacity: 0;
+    }
+}
