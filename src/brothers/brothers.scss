@@ -11,22 +11,26 @@ brothers {
         position: fixed;
         display: block;
         margin-top: 0;
-        transition: margin 0.5s ease-out;
+        transition: bottom 0.5s ease-out;
         &.brother-1 {
             height: 30em;
             left: 2em;
+            bottom: 0;
         }
         &.brother-2 {
             height: 30em;
             left: 11em;
+            bottom: 0;
         }
         &.brother-3 {
             height: 30em;
             right: 3em;
+            bottom: 0;
         }
         &.jesus {
             height: 30em;
             right: 8em;
+            bottom: 0;
         }
     }
 }
@@ -36,16 +40,16 @@ brothers {
         opacity: 0;
         img {
             &.brother-1 {
-                margin-top: 2em;
+                bottom: 2em;
             }
             &.brother-2 {
-                margin-top: -1em;
+                bottom: -1em;
             }
             &.brother-3 {
-                margin-top: 5em;
+                bottom: 5em;
             }
             &.jesus {
-                margin-top: -6em;
+                bottom: -6em;
             }
         }
     }
