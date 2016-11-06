@@ -15,6 +15,12 @@ class NavController {
         this.$document = $document;
         this.$state = $state;
         this.navService = navService;
+        this.thanksVisible = false;
+    }
+
+    toggleThanks() {
+        this.thanksVisible = !this.thanksVisible;
+        this.navService.hidden = this.thanksVisible;
     }
 
 

@@ -49,4 +49,35 @@ nav {
             background-color: green;
         }
     }
+    .show-thanks {
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        font-size: 2em;
+        color: #000;
+    }
+    .thanks {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        overflow: scroll;
+        background: #000;
+        color: #fff;
+        padding: 20px 0;
+        opacity: 1;
+        transition: opacity 0.4s;
+        &.ng-hide-remove, &.ng-hide-add-active {
+            opacity: 0;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                display: block;
+            }
+        }
+    }
 }

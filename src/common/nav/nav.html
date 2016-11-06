@@ -9,10 +9,73 @@
 <div class="progress">
     <div class="bar" ng-style="$ctrl.progress()"></div>
 </div>
-<audio id="questionAudio" src="audio/title.mp3" loop />
-<audio id="brothersAudio" src="audio/brothers.mp3" loop />
-<audio id="crowdAudio" src="audio/crowd.mp3" loop />
-<audio id="jesusAudio" src="audio/jesus.mp3" loop />
-<audio id="challengeAudio" src="audio/title.mp3" loop />
-<audio id="selectorAudio" src="audio/selector.mp3" loop />
-<audio id="transitionAudio" src="audio/transition.mp3" />
+<audio id="questionAudio" src="audio/title.mp3" loop></audio>
+<audio id="brothersAudio" src="audio/brothers.mp3" loop></audio>
+<audio id="crowdAudio" src="audio/crowd.mp3" loop></audio>
+<audio id="jesusAudio" src="audio/jesus.mp3" loop></audio>
+<audio id="challengeAudio" src="audio/title.mp3" loop></audio>
+<audio id="selectorAudio" src="audio/selector.mp3" loop></audio>
+<audio id="transitionAudio" src="audio/transition.mp3"></audio>
+<div class="thanks" ng-show="$ctrl.thanksVisible">
+    <h1>Thanks!</h1>
+    <h3>Sponsor</h3>
+    <ul>
+        <li>jesus.net</li>
+    </ul>
+
+    <h3>Title Music</h3>
+    <ul>
+        <li>John Dreamer “Rise”</li>
+    </ul>
+
+    <h3>Various Ambient Sounds</h3>
+    <ul>
+        <li>https://www.freesound.org/</li>
+    </ul>
+
+    <h3>Audio</h3>
+    <ul>
+        <li>Siyang Cao</li>
+    </ul>
+
+    <h3>Coder</h3>
+    <ul>
+        <li>Tataihono Nikora (master coder)</li>
+        <li>Jordan Grimmer (committer) </li>
+    </ul>
+
+    <h3>Script</h3>
+    <ul>
+        <li>Esther Chan (writer)</li>
+        <li>Teresa McCrurran (writer) </li>
+        <li>Siyang Cao (creative input)</li>
+        <li>Aram Kim (creative input)</li>
+    </ul>
+
+    <h3>Illustration</h3>
+    <ul>
+        <li>Allana Smith (lead)</li>
+        <li>Cliff Chen (Crowd)</li>
+        <li>Victoria Chen (Jesus)</li>
+        <li>Andrew Yu (Bradas) </li>
+        <li>Loreeta White (Pots)</li>
+        <li>Ashly Crutcher (vectors)</li>
+    </ul>
+
+    <h3>Resource</h3>
+    <ul>
+        <li>Student Life NZ Resources https://www.studentlife.org.nz/gospel/</li>
+        <li>Cru http://knowgod.com/en/</li>
+        <li>Siyang Cao (writer)</li>
+        <li>Teresa McCurran (writer)</li>
+        <li>Esther Chan (writer)</li>
+        <li>Abigail Alaon (ideas) </li>
+        <li>Ming Yong (ideas)</li>
+    </ul>
+</div>
+<a class="show-thanks" ng-show="$ctrl.isVisible()" ng-click="$ctrl.toggleThanks()">
+    <i class="fa fa-question-circle-o" ng-hide="$ctrl.thanksVisible"></i>
+</a>
+<a class="show-thanks" ng-click="$ctrl.toggleThanks()">
+    <i class="fa fa-times" ng-show="$ctrl.thanksVisible" style="color:#fff;"></i>
+</a>
